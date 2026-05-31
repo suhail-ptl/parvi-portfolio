@@ -1,0 +1,938 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Fathima Parveena — Strategy & Production</title>
+  <meta name="description" content="Senior Account Manager → Strategy & Production. Kozhikode.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400;1,600&family=Karla:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+  <style>
+    /* ── RESET & BASE ─────────────────────────────────────── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+
+    :root {
+      --bg:           #F7F6F2;
+      --ink:          #121210;
+      --ink-mid:      #797974;
+      --ink-faint:    #B4B3AE;
+      --accent:       #BF4E30;
+      --accent-faint: #F0E8E4;
+      --border:       #E0DDD7;
+      --white:        #FFFFFF;
+      --black:        #121210;
+
+      --font-display: 'Cormorant Garamond', Georgia, serif;
+      --font-body:    'Karla', sans-serif;
+
+      --max-w:        1080px;
+      --pad-h:        56px;
+      --section-v:    112px;
+    }
+
+    body {
+      background-color: var(--bg);
+      color: var(--ink);
+      font-family: var(--font-body);
+      font-weight: 300;
+      font-size: 1.08rem;
+      line-height: 1.8;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    a { color: inherit; text-decoration: none; }
+    img { display: block; }
+
+    /* ── NAV ──────────────────────────────────────────────── */
+    #nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 200;
+      height: 60px;
+      padding: 0 var(--pad-h);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: rgba(247, 246, 242, 0.88);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      border-bottom: 1px solid transparent;
+      transition: border-color 0.4s ease;
+    }
+    #nav.scrolled { border-color: var(--border); }
+
+    .nav-name {
+      font-family: var(--font-display);
+      font-size: 1.05rem;
+      font-weight: 400;
+      letter-spacing: 0.01em;
+      color: var(--ink);
+    }
+    .nav-right {
+      display: flex;
+      align-items: center;
+      gap: 32px;
+    }
+    .nav-link {
+      font-size: 0.72rem;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--ink-mid);
+      transition: color 0.2s;
+    }
+    .nav-link:hover { color: var(--ink); }
+    .nav-cta {
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--accent);
+      padding-bottom: 2px;
+      border-bottom: 1px solid var(--accent);
+      transition: opacity 0.2s;
+    }
+    .nav-cta:hover { opacity: 0.7; }
+
+    /* ── HERO ─────────────────────────────────────────────── */
+    #hero {
+      min-height: 100vh;
+      padding: 100px var(--pad-h) 80px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      align-items: end;
+      gap: 80px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-left { position: relative; z-index: 2; }
+
+    .hero-eyebrow {
+      font-size: 0.7rem;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 28px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .hero-eyebrow::before {
+      content: '';
+      display: inline-block;
+      width: 32px;
+      height: 1px;
+      background: var(--accent);
+    }
+
+    .hero-headline {
+      font-family: var(--font-display);
+      font-style: italic;
+      font-weight: 300;
+      font-size: clamp(3rem, 5vw, 4.8rem);
+      line-height: 1.12;
+      color: var(--ink);
+      margin-bottom: 28px;
+    }
+
+    .hero-sub {
+      font-size: 1.1rem;
+      font-weight: 300;
+      color: var(--ink-mid);
+      line-height: 1.8;
+      max-width: 460px;
+      margin-bottom: 56px;
+    }
+
+    .hero-meta {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px 32px;
+    }
+    .meta-item {}
+    .meta-label {
+      font-size: 0.65rem;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--ink-faint);
+      margin-bottom: 2px;
+    }
+    .meta-value {
+      font-family: var(--font-display);
+      font-size: 1rem;
+      font-weight: 400;
+      color: var(--ink);
+    }
+    .meta-value a {
+      border-bottom: 1px solid var(--border);
+      transition: border-color 0.2s, color 0.2s;
+    }
+    .meta-value a:hover {
+      color: var(--accent);
+      border-color: var(--accent);
+    }
+
+    .hero-right {
+      position: relative;
+      align-self: stretch;
+      z-index: 1;
+    }
+    .hero-img-wrap {
+      position: absolute;
+      inset: 0;
+      overflow: hidden;
+    }
+    .hero-img-wrap img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center top;
+      opacity: 0.9;
+    }
+    .hero-img-wrap::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to left, transparent 70%, var(--bg) 100%);
+    }
+
+    .scroll-hint {
+      position: absolute;
+      bottom: 40px;
+      left: var(--pad-h);
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-size: 0.65rem;
+      font-weight: 600;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--ink-faint);
+    }
+    .scroll-hint::after {
+      content: '';
+      display: block;
+      width: 40px;
+      height: 1px;
+      background: var(--ink-faint);
+    }
+
+    /* ── SECTION CHROME ───────────────────────────────────── */
+    .section-wrap {
+      max-width: calc(var(--max-w) + (var(--pad-h) * 2));
+      margin: 0 auto;
+      padding: var(--section-v) var(--pad-h);
+    }
+    .section-header {
+      margin-bottom: 64px;
+    }
+    .section-eyebrow {
+      font-size: 0.68rem;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 12px;
+    }
+    .section-title {
+      font-family: var(--font-display);
+      font-weight: 400;
+      font-size: clamp(2.1rem, 3vw, 2.9rem);
+      line-height: 1.2;
+      color: var(--ink);
+    }
+
+    /* ── PRINCIPLES ───────────────────────────────────────── */
+    #principles {
+      background: var(--ink);
+    }
+    #principles .section-eyebrow { color: var(--accent); }
+    #principles .section-title { color: var(--bg); }
+
+    .principles-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1px;
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.06);
+    }
+    .principle {
+      padding: 44px 40px;
+      background: var(--ink);
+      transition: background 0.3s;
+    }
+    .principle:hover { background: #1c1c1a; }
+
+    .principle-num {
+      font-family: var(--font-display);
+      font-style: italic;
+      font-size: 2.8rem;
+      font-weight: 300;
+      line-height: 1;
+      color: var(--accent);
+      opacity: 0.4;
+      margin-bottom: 20px;
+    }
+    .principle-title {
+      font-family: var(--font-display);
+      font-size: 1.35rem;
+      font-weight: 400;
+      line-height: 1.45;
+      color: var(--bg);
+      margin-bottom: 14px;
+    }
+    .principle-body {
+      font-size: 1rem;
+      font-weight: 300;
+      color: rgba(247, 246, 242, 0.55);
+      line-height: 1.8;
+    }
+
+    /* ── CASE STUDIES INTRO ───────────────────────────────── */
+    #work-intro {
+      padding-bottom: 0;
+    }
+
+    /* ── CASE STUDY ───────────────────────────────────────── */
+    .case-study {
+      border-top: 1px solid var(--border);
+    }
+    .case-inner {
+      max-width: calc(var(--max-w) + (var(--pad-h) * 2));
+      margin: 0 auto;
+      padding: 72px var(--pad-h);
+    }
+
+    .case-header {
+      display: flex;
+      align-items: flex-start;
+      gap: 28px;
+      margin-bottom: 52px;
+    }
+    .case-num {
+      font-family: var(--font-display);
+      font-style: italic;
+      font-size: 3.5rem;
+      font-weight: 300;
+      line-height: 1;
+      color: var(--border);
+      flex-shrink: 0;
+      margin-top: -4px;
+    }
+    .case-head-text {}
+    .case-title {
+      font-family: var(--font-display);
+      font-size: clamp(1.8rem, 2.5vw, 2.3rem);
+      font-weight: 400;
+      line-height: 1.2;
+      color: var(--ink);
+      margin-bottom: 8px;
+    }
+    .case-subtitle {
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--ink-mid);
+    }
+
+    .case-narrative {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 36px;
+      margin-bottom: 44px;
+    }
+    .narr-block {}
+    .narr-label {
+      font-size: 0.65rem;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 10px;
+    }
+    .narr-text {
+      font-size: 1.02rem;
+      font-weight: 300;
+      color: var(--ink-mid);
+      line-height: 1.8;
+    }
+
+    .case-results {
+      background: var(--accent-faint);
+      border-left: 3px solid var(--accent);
+      padding: 28px 36px;
+      margin-bottom: 44px;
+    }
+    .results-label {
+      font-size: 0.65rem;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 16px;
+    }
+    .results-list {
+      list-style: none;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 6px 40px;
+    }
+    .results-list li {
+      font-size: 1rem;
+      font-weight: 400;
+      color: var(--ink);
+      padding-left: 18px;
+      position: relative;
+    }
+    .results-list li::before {
+      content: '—';
+      position: absolute;
+      left: 0;
+      color: var(--accent);
+      font-size: 0.8em;
+    }
+
+    .case-photos {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+      margin-bottom: 16px;
+    }
+    .case-photo {
+      width: 100%;
+      aspect-ratio: 4 / 3;
+      object-fit: cover;
+    }
+
+    .case-video {
+      position: relative;
+      cursor: pointer;
+      overflow: hidden;
+      margin-bottom: 44px;
+    }
+    .case-video img {
+      width: 100%;
+      height: 260px;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.5s ease;
+    }
+    .case-video:hover img { transform: scale(1.02); }
+    .video-overlay {
+      position: absolute;
+      inset: 0;
+      background: rgba(18, 18, 16, 0.5);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 20px;
+      transition: background 0.3s;
+    }
+    .case-video:hover .video-overlay { background: rgba(18, 18, 16, 0.65); }
+    .play-circle {
+      width: 60px;
+      height: 60px;
+      border: 2px solid rgba(255,255,255,0.8);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background 0.3s, border-color 0.3s;
+      flex-shrink: 0;
+    }
+    .case-video:hover .play-circle {
+      background: var(--accent);
+      border-color: var(--accent);
+    }
+    .play-circle svg { margin-left: 4px; }
+    .video-label-text {
+      font-size: 0.8rem;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.9);
+    }
+
+    .case-takeaway {
+      font-family: var(--font-display);
+      font-style: italic;
+      font-weight: 300;
+      font-size: clamp(1.5rem, 2.2vw, 2rem);
+      line-height: 1.45;
+      color: var(--ink);
+      padding-top: 36px;
+      border-top: 1px solid var(--border);
+      position: relative;
+      padding-left: 28px;
+    }
+    .case-takeaway::before {
+      content: '"';
+      position: absolute;
+      left: 0;
+      top: 28px;
+      font-size: 2.4rem;
+      line-height: 1;
+      color: var(--accent);
+      font-style: normal;
+    }
+
+    /* ── EXPERIENCE ───────────────────────────────────────── */
+    #experience { background: var(--bg); }
+
+    .exp-table {
+      width: 100%;
+      border-top: 1px solid var(--border);
+    }
+    .exp-row {
+      display: grid;
+      grid-template-columns: 220px 1fr;
+      gap: 48px;
+      padding: 32px 0;
+      border-bottom: 1px solid var(--border);
+      align-items: start;
+      transition: background 0.2s;
+    }
+    .exp-period {
+      font-size: 0.8rem;
+      font-weight: 400;
+      color: var(--ink-mid);
+      padding-top: 2px;
+      line-height: 1.5;
+    }
+    .exp-right {}
+    .exp-role {
+      font-family: var(--font-display);
+      font-size: 1.3rem;
+      font-weight: 400;
+      color: var(--ink);
+      margin-bottom: 2px;
+    }
+    .exp-company {
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 8px;
+    }
+    .exp-note {
+      font-size: 0.87rem;
+      font-weight: 300;
+      color: var(--ink-mid);
+      line-height: 1.7;
+    }
+
+    /* ── CLOSING / FOOTER ─────────────────────────────────── */
+    #closing {
+      background: var(--ink);
+      text-align: center;
+      padding: var(--section-v) var(--pad-h);
+    }
+    .closing-inner {
+      max-width: 680px;
+      margin: 0 auto;
+    }
+    .closing-label {
+      font-size: 0.68rem;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 24px;
+    }
+    .closing-text {
+      font-family: var(--font-display);
+      font-style: italic;
+      font-weight: 300;
+      font-size: clamp(1.6rem, 2.5vw, 2.1rem);
+      line-height: 1.6;
+      color: var(--bg);
+      margin-bottom: 48px;
+    }
+    .closing-actions {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 32px;
+      flex-wrap: wrap;
+    }
+    .cta-primary {
+      display: inline-block;
+      padding: 14px 44px;
+      background: var(--accent);
+      color: white;
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      transition: background 0.2s;
+    }
+    .cta-primary:hover { background: #a03d20; }
+    .cta-secondary {
+      font-size: 0.75rem;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: rgba(247,246,242,0.5);
+      border-bottom: 1px solid rgba(247,246,242,0.2);
+      padding-bottom: 2px;
+      transition: color 0.2s, border-color 0.2s;
+    }
+    .cta-secondary:hover {
+      color: rgba(247,246,242,0.9);
+      border-color: rgba(247,246,242,0.5);
+    }
+    .footer-line {
+      margin-top: 80px;
+      font-size: 0.68rem;
+      font-weight: 300;
+      color: rgba(247,246,242,0.18);
+      letter-spacing: 0.08em;
+    }
+
+    /* ── MODAL ────────────────────────────────────────────── */
+    #modal {
+      display: none;
+      position: fixed;
+      inset: 0;
+      z-index: 500;
+      background: rgba(12, 12, 10, 0.95);
+      align-items: center;
+      justify-content: center;
+    }
+    #modal.open { display: flex; }
+    .modal-box {
+      position: relative;
+      width: 88%;
+      max-width: 880px;
+      aspect-ratio: 16 / 9;
+    }
+    .modal-box iframe {
+      width: 100%;
+      height: 100%;
+      border: none;
+      display: block;
+    }
+    .modal-close {
+      position: absolute;
+      top: -44px;
+      right: 0;
+      background: none;
+      border: none;
+      color: rgba(247,246,242,0.6);
+      font-family: var(--font-body);
+      font-size: 0.7rem;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      cursor: pointer;
+      padding: 4px 0;
+      transition: color 0.2s;
+    }
+    .modal-close:hover { color: rgba(247,246,242,1); }
+
+    /* ── SCROLL FADE IN ───────────────────────────────────── */
+    .reveal {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.65s ease, transform 0.65s ease;
+    }
+    .reveal.in {
+      opacity: 1;
+      transform: none;
+    }
+
+    /* ── RESPONSIVE ───────────────────────────────────────── */
+    @media (max-width: 960px) {
+      :root { --pad-h: 32px; --section-v: 80px; }
+
+      #hero {
+        grid-template-columns: 1fr;
+        padding: 100px var(--pad-h) 60px;
+      }
+      .hero-right { display: none; }
+      .hero-sub { max-width: 100%; }
+      .hero-meta { grid-template-columns: 1fr 1fr; }
+
+      .principles-grid { grid-template-columns: 1fr; gap: 1px; }
+      .case-narrative { grid-template-columns: 1fr; gap: 24px; }
+      .results-list { grid-template-columns: 1fr; }
+      .case-photos { grid-template-columns: 1fr 1fr; }
+      .exp-row { grid-template-columns: 1fr; gap: 4px; }
+      .nav-link { display: none; }
+    }
+
+    @media (max-width: 600px) {
+      :root { --pad-h: 20px; --section-v: 64px; }
+      .hero-meta { grid-template-columns: 1fr; gap: 16px; }
+      .case-photos { grid-template-columns: 1fr; }
+      .case-header { flex-direction: column; gap: 8px; }
+      .case-num { font-size: 2.5rem; }
+      .principles-grid { gap: 0; }
+      .principle { padding: 32px 24px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav id="nav">
+    <a href="#hero" class="nav-name" id="nav-name">Loading…</a>
+    <div class="nav-right">
+      <a href="#work" class="nav-link">Work</a>
+      <a href="#experience" class="nav-link">Experience</a>
+      <a href="#closing" class="nav-cta" id="nav-cta">Get in Touch</a>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section id="hero">
+    <div class="hero-left">
+      <p class="hero-eyebrow" id="hero-eyebrow"></p>
+      <h1 class="hero-headline" id="hero-headline"></h1>
+      <p class="hero-sub" id="hero-sub"></p>
+      <div class="hero-meta" id="hero-meta"></div>
+    </div>
+    <div class="hero-right">
+      <div class="hero-img-wrap">
+        <img id="hero-img" src="" alt="">
+      </div>
+    </div>
+    <div class="scroll-hint">Scroll</div>
+  </section>
+
+  <!-- PRINCIPLES -->
+  <section id="principles">
+    <div class="section-wrap">
+      <div class="section-header">
+        <p class="section-eyebrow">How I think</p>
+        <h2 class="section-title">The way I approach work</h2>
+      </div>
+      <div class="principles-grid" id="principles-grid"></div>
+    </div>
+  </section>
+
+  <!-- WORK INTRO -->
+  <section id="work">
+    <div class="section-wrap" id="work-intro">
+      <div class="section-header reveal">
+        <p class="section-eyebrow">Selected Work</p>
+        <h2 class="section-title">Three engagements. One through-line.</h2>
+      </div>
+    </div>
+  </section>
+
+  <!-- CASE STUDIES (injected) -->
+  <div id="cases"></div>
+
+  <!-- EXPERIENCE -->
+  <section id="experience">
+    <div class="section-wrap">
+      <div class="section-header reveal">
+        <p class="section-eyebrow">Experience</p>
+        <h2 class="section-title">Where I've worked</h2>
+      </div>
+      <div class="exp-table" id="exp-table"></div>
+    </div>
+  </section>
+
+  <!-- CLOSING -->
+  <section id="closing">
+    <div class="closing-inner">
+      <p class="closing-label">What I'm looking for</p>
+      <p class="closing-text" id="closing-text"></p>
+      <div class="closing-actions">
+        <a href="" class="cta-primary" id="cta-email">Get in Touch</a>
+        <a href="" class="cta-secondary" id="cta-phone"></a>
+      </div>
+      <p class="footer-line" id="footer-line"></p>
+    </div>
+  </section>
+
+  <!-- MODAL -->
+  <div id="modal" role="dialog" aria-modal="true">
+    <div class="modal-box">
+      <button class="modal-close" onclick="closeModal()">✕ Close</button>
+      <iframe id="modal-iframe" src="" allowfullscreen allow="autoplay"></iframe>
+    </div>
+  </div>
+
+  <!-- SCRIPTS -->
+  <script src="content.js"></script>
+  <script>
+    // ── RENDER ─────────────────────────────────────────────
+    function render() {
+      const C = CONTENT;
+
+      // Nav
+      document.getElementById('nav-name').textContent = C.name;
+      document.getElementById('nav-cta').href = `mailto:${C.contact.email}`;
+
+      // Hero
+      document.getElementById('hero-eyebrow').textContent = `${C.title} — ${C.location}`;
+      document.getElementById('hero-headline').textContent = C.hero.headline;
+      document.getElementById('hero-sub').textContent = C.hero.subtext;
+      document.getElementById('hero-img').src = C.images.heroBg;
+      document.getElementById('hero-img').alt = C.name;
+      document.getElementById('hero-meta').innerHTML = `
+        <div class="meta-item">
+          <p class="meta-label">Name</p>
+          <p class="meta-value">${C.name}</p>
+        </div>
+        <div class="meta-item">
+          <p class="meta-label">Location</p>
+          <p class="meta-value">${C.location}</p>
+        </div>
+        <div class="meta-item">
+          <p class="meta-label">Email</p>
+          <p class="meta-value"><a href="mailto:${C.contact.email}">${C.contact.email}</a></p>
+        </div>
+        <div class="meta-item">
+          <p class="meta-label">Phone</p>
+          <p class="meta-value"><a href="tel:${C.contact.phone}">${C.contact.phone}</a></p>
+        </div>
+      `;
+
+      // Principles
+      const romans = ['I', 'II', 'III', 'IV'];
+      document.getElementById('principles-grid').innerHTML = C.principles.map((p, i) => `
+        <div class="principle reveal">
+          <div class="principle-num">${romans[i]}</div>
+          <p class="principle-title">${p.title}</p>
+          <p class="principle-body">${p.body}</p>
+        </div>
+      `).join('');
+
+      // Case Studies
+      document.getElementById('cases').innerHTML = C.caseStudies.map(cs => {
+        const thumb = `https://img.youtube.com/vi/${cs.video.id}/maxresdefault.jpg`;
+        const fallback = `https://img.youtube.com/vi/${cs.video.id}/hqdefault.jpg`;
+        const photos = cs.images.map((src, i) =>
+          `<img class="case-photo" src="${src}" alt="${cs.title} — photo ${i + 1}" loading="lazy">`
+        ).join('');
+
+        return `
+        <article class="case-study">
+          <div class="case-inner reveal">
+            <div class="case-header">
+              <span class="case-num">${cs.id}</span>
+              <div class="case-head-text">
+                <h3 class="case-title">${cs.title}</h3>
+                <p class="case-subtitle">${cs.subtitle}</p>
+              </div>
+            </div>
+
+            <div class="case-narrative">
+              <div class="narr-block">
+                <p class="narr-label">The Situation</p>
+                <p class="narr-text">${cs.situation}</p>
+              </div>
+              <div class="narr-block">
+                <p class="narr-label">The Problem</p>
+                <p class="narr-text">${cs.problem}</p>
+              </div>
+              <div class="narr-block">
+                <p class="narr-label">What I Did</p>
+                <p class="narr-text">${cs.action}</p>
+              </div>
+            </div>
+
+            <div class="case-results">
+              <p class="results-label">What it delivered</p>
+              <ul class="results-list">
+                ${cs.results.map(r => `<li>${r}</li>`).join('')}
+              </ul>
+            </div>
+
+            <div class="case-photos">${photos}</div>
+
+            <div class="case-video" onclick="openModal('${cs.video.id}')">
+              <img
+                src="${thumb}"
+                onerror="this.src='${fallback}'"
+                alt="${cs.title} — watch film"
+              >
+              <div class="video-overlay">
+                <div class="play-circle">
+                  <svg width="16" height="18" viewBox="0 0 16 18" fill="white">
+                    <polygon points="1,1 15,9 1,17"/>
+                  </svg>
+                </div>
+                <span class="video-label-text">${cs.video.label}</span>
+              </div>
+            </div>
+
+            <p class="case-takeaway">${cs.takeaway}</p>
+          </div>
+        </article>
+        `;
+      }).join('');
+
+      // Experience
+      document.getElementById('exp-table').innerHTML = C.experience.map(e => `
+        <div class="exp-row reveal">
+          <p class="exp-period">${e.period}</p>
+          <div class="exp-right">
+            <p class="exp-role">${e.role}</p>
+            <p class="exp-company">${e.company}</p>
+            ${e.note ? `<p class="exp-note">${e.note}</p>` : ''}
+          </div>
+        </div>
+      `).join('');
+
+      // Closing
+      document.getElementById('closing-text').textContent = C.closing;
+      document.getElementById('cta-email').href = `mailto:${C.contact.email}`;
+      document.getElementById('cta-phone').href = `tel:${C.contact.phone}`;
+      document.getElementById('cta-phone').textContent = C.contact.phone;
+      document.getElementById('footer-line').textContent =
+        `${C.name} · ${C.location} · ${C.contact.email}`;
+    }
+
+    // ── VIDEO ───────────────────────────────────────────────
+    function openModal(videoId) {
+      window.open('https://www.youtube.com/watch?v=' + videoId, '_blank', 'noopener');
+    }
+
+    // ── BOOT ────────────────────────────────────────────────
+    document.addEventListener('DOMContentLoaded', () => {
+      render();
+
+      // Nav border on scroll
+      window.addEventListener('scroll', () => {
+        document.getElementById('nav').classList.toggle('scrolled', window.scrollY > 48);
+      }, { passive: true });
+
+      // Modal: close on backdrop click or Escape
+      document.getElementById('modal').addEventListener('click', e => {
+        if (e.target === document.getElementById('modal')) closeModal();
+      });
+      document.addEventListener('keydown', e => {
+        if (e.key === 'Escape') closeModal();
+      });
+
+      // Scroll reveal observer
+      // Small timeout so render() has populated the DOM
+      setTimeout(() => {
+        const io = new IntersectionObserver((entries) => {
+          entries.forEach(entry => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add('in');
+              io.unobserve(entry.target);
+            }
+          });
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+      }, 80);
+    });
+  </script>
+</body>
+</html>
